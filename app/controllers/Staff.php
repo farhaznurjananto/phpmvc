@@ -61,4 +61,12 @@ class Staff extends Controller
             exit;
         }
     }
+
+    public function search()
+    {
+        $data['staff'] = $this->model('Staff_model')->searchStaff();
+        $this->view('templates/header');
+        $this->view('staff/index', $data);
+        $this->view('templates/footer');
+    }
 }

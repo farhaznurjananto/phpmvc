@@ -1,11 +1,17 @@
 <div class="container my-5">
-    <div class="d-flex justify-content-between align-items-center py-3">
+    <div class="py-3">
         <h1 class="my-2">admin/index</h1>
-
+    </div>
+    <div class="d-flex justify-content-between align-items-center py-3">
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary insertModal" data-bs-toggle="modal" data-bs-target="#formModal">
             Insert New Data Staff
         </button>
+
+        <form class="d-flex" role="search" action="<?php echo BASEURL; ?>staff/search" method="post">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" id="keyword">
+            <button class="btn btn-outline-primary" type="submit" id="search"><i class="bi bi-search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Search Staff"></i></button>
+        </form>
     </div>
 
     <!-- flash -->

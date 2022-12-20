@@ -64,4 +64,13 @@ class Staff_model
 
         return $this->db->rowCount();
     }
+
+    public function searchStaff()
+    {
+        $keyword = $_POST['keyword'];
+        $query = 'SELECT * FROM ' . $this->table . ' WHERE name LIKE :keyword';
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
+    }
 }
