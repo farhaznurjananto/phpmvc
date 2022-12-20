@@ -3,8 +3,8 @@
         <h1 class="my-2">admin/index</h1>
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
-            Insert New Staff
+        <button type="button" class="btn btn-primary insertModal" data-bs-toggle="modal" data-bs-target="#formModal">
+            Insert New Data Staff
         </button>
     </div>
 
@@ -22,9 +22,13 @@
         <tbody>
             <?php foreach ($data['staff'] as $index => $staff) : ?>
                 <tr>
-                    <td><?php echo ($index + 1) ?></td>
+                    <td width=10%><?php echo ($index + 1) ?></td>
                     <td><?php echo $staff['name'] ?></td>
-                    <td><a href="<?php echo BASEURL; ?>staff/detail/<?php echo $staff['id']; ?>" class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Staff Detail"><i class="bi bi-file-earmark-richtext"></i></a></td>
+                    <td width=20%>
+                        <a href="<?php echo BASEURL; ?>staff/detail/<?php echo $staff['id']; ?>" class="btn btn-outline-secondary my-1"><i class="bi bi-file-earmark-richtext" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Staff Detail"></i></a>
+                        <a href="<?php echo BASEURL; ?>staff/update/<?php echo $staff['id']; ?>" class="btn btn-success my-1 updateModal" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?php echo $staff['id']; ?>"><i class=" bi bi-pencil-square" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Update Staff"></i></a>
+                        <a href="<?php echo BASEURL; ?>staff/delete/<?php echo $staff['id']; ?>" class="btn btn-danger my-1" onclick="return confirm('Are you sure you want to delete this staff?');"><i class="bi bi-trash3-fill" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete Staff"></i></i></a>
+                    </td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -40,23 +44,48 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="<?php echo BASEURL; ?>staff/create" method="post">
-                    <div class="form-group">
+                <form action="<?php echo BASEURL; ?>staff/create" method="post" class="needs-validation" novalidate>
+                    <input type="hidden" name="id" id="id">
+                    <div class="form-group mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="input name...." required>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="input name...." required>
+                            <div class="invalid-feedback">
+                                Please fill input name.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="email" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="email" name="email" placeholder="input email address...." required>
+                        <div class="input-group has-validation">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="input email address...." required>
+                            <div class="invalid-feedback">
+                                Please fill input email.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group mb-3">
                         <label for="mobile" class="form-label">Phone Number</label>
-                        <input type="number" class="form-control" id="mobile" name="mobile" placeholder="input phone number...." required>
+                        <div class="input-group has-validation">
+                            <input type="number" class="form-control" id="mobile" name="mobile" placeholder="input phone number...." required>
+                            <div class="invalid-feedback">
+                                Please fill input phone number.
+                            </div>
+                            <div class="valid-feedback">
+                                Looks good!
+                            </div>
+                        </div>
                     </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Insert Data</button>
+                <button type="submit" class="btn btn-primary" id="btnModal">Insert</button>
                 </form>
             </div>
         </div>

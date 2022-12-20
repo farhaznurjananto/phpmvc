@@ -16,11 +16,10 @@
 <!-- end of footer -->
 
 <!-- script js -->
+<script src="<?php echo BASEURL; ?>js/jquery-3.6.2.js"></script>
 <script src="<?php echo BASEURL; ?>js/bootstrap.bundle.min.js"></script>
-<script>
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-    const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-</script>
+<script src="<?php echo BASEURL; ?>js/script.js"></script>
+<script src="<?php echo BASEURL; ?>js/custom.js"></script>
 
 </body>
 </body>

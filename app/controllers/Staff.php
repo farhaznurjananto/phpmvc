@@ -30,4 +30,35 @@ class Staff extends Controller
             exit;
         }
     }
+
+    public function delete($id)
+    {
+        if ($this->model('Staff_model')->deleteDataStaff($id) > 0) {
+            Flasher::setFlash('succeed', 'Deleted', 'success');
+            header('Location: ' . BASEURL . 'staff');
+            exit;
+        } else {
+            Flasher::setFlash('succeed', 'Deleted', 'success');
+            header('Location: ' . BASEURL . 'staff');
+            exit;
+        }
+    }
+
+    public function getUpdate()
+    {
+        echo json_encode($this->model('Staff_model')->getStaffById($_POST['id']));
+    }
+
+    public function update()
+    {
+        if ($this->model('Staff_model')->updateDataStaff($_POST) > 0) {
+            Flasher::setFlash('succeed', 'Updated', 'success');
+            header('Location: ' . BASEURL . 'staff');
+            exit;
+        } else {
+            Flasher::setFlash('succeed', 'Updated', 'success');
+            header('Location: ' . BASEURL . 'staff');
+            exit;
+        }
+    }
 }
