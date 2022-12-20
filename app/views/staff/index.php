@@ -2,13 +2,13 @@
     <div class="py-3">
         <h1 class="my-2">admin/index</h1>
     </div>
-    <div class="d-flex justify-content-between align-items-center py-3">
+    <div class="d-flex justify-content-between align-items-center flex-wrap">
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary insertModal" data-bs-toggle="modal" data-bs-target="#formModal">
+        <button type="button" class="btn btn-primary insertModal my-1" data-bs-toggle="modal" data-bs-target="#formModal">
             Insert New Data Staff
         </button>
 
-        <form class="d-flex" role="search" action="<?php echo BASEURL; ?>staff/search" method="post">
+        <form class="d-flex my-1" role="search" action="<?php echo BASEURL; ?>staff/search" method="post">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyword" id="keyword">
             <button class="btn btn-outline-primary" type="submit" id="search"><i class="bi bi-search" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Search Staff"></i></button>
         </form>
@@ -17,7 +17,7 @@
     <!-- flash -->
     <?php Flasher::flash(); ?>
 
-    <table class="table">
+    <table class="table overflow-scroll">
         <thead>
             <tr>
                 <th scope="col">No</th>
@@ -30,7 +30,7 @@
                 <tr>
                     <td width=10%><?php echo ($index + 1) ?></td>
                     <td><?php echo $staff['name'] ?></td>
-                    <td width=20%>
+                    <td width=20% align="center">
                         <a href="<?php echo BASEURL; ?>staff/detail/<?php echo $staff['id']; ?>" class="btn btn-outline-secondary my-1"><i class="bi bi-file-earmark-richtext" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Staff Detail"></i></a>
                         <a href="<?php echo BASEURL; ?>staff/update/<?php echo $staff['id']; ?>" class="btn btn-success my-1 updateModal" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?php echo $staff['id']; ?>"><i class=" bi bi-pencil-square" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Update Staff"></i></a>
                         <a href="<?php echo BASEURL; ?>staff/delete/<?php echo $staff['id']; ?>" class="btn btn-danger my-1" onclick="return confirm('Are you sure you want to delete this staff?');"><i class="bi bi-trash3-fill" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Delete Staff"></i></i></a>
